@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Meet Dave - Computer Science student and aspiring software professional."
+  />
+
+  <title>Meet Dave | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* =========================
+       BASIC SETTINGS
+    ========================= */
+
+    :root {
+      --background: #07111d;
+      --background-light: #0b1726;
+
+      --card: rgba(14, 29, 48, 0.72);
+      --card-hover: rgba(18, 38, 61, 0.9);
+
+      --text: #f2f6fb;
+      --text-light: #c5d2e1;
+      --muted: #899bb0;
+
+      --blue: #70bfff;
+      --cyan: #68dff5;
+      --yellow: #ffc56f;
+      --green: #6dd99b;
+
+      --border: rgba(164, 199, 232, 0.14);
+      --border-hover: rgba(112, 191, 255, 0.38);
+
+      --radius: 18px;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      background:
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(60, 145, 220, 0.13),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(62, 200, 230, 0.06),
+          transparent 25%
+        ),
+        var(--background);
+
+      color: var(--text);
+
+      font-family: "DM Sans", sans-serif;
+
+      line-height: 1.6;
+
+      overflow-x: hidden;
+    }
+
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      background-image:
+        linear-gradient(
+          rgba(150, 190, 225, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(150, 190, 225, 0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+    }
+
+
+    ::selection {
+      background: var(--blue);
+      color: #07111d;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+    .container {
+      width: min(1080px, calc(100% - 36px));
+      margin: auto;
+    }
+
+
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 100;
+
+      border-bottom: 1px solid transparent;
+
+      transition: 0.3s ease;
+    }
+
+
+    .navbar.scrolled {
+      background: rgba(7, 17, 29, 0.85);
+
+      backdrop-filter: blur(16px);
+
+      border-color: var(--border);
+    }
+
+
+    .nav-inner {
+      height: 68px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 19px;
+
+      font-weight: 700;
+
+      letter-spacing: -0.04em;
+
+      text-decoration: none;
+    }
+
+
+    .logo span {
+      color: var(--blue);
+    }
+
+
+    .nav-links {
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      padding: 8px 10px;
+
+      border-radius: 8px;
+
+      transition: 0.2s;
+    }
+
+
+    .nav-links a:hover {
+      color: var(--text);
+
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+
+    .availability {
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--muted);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+    }
+
+
+    .availability span {
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 0 12px rgba(109, 217, 155, 0.7);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      align-items: center;
+
+      gap: 70px;
+
+      padding-top: 100px;
+    }
+
+
+    .small-intro {
+      display: inline-block;
+
+      color: var(--yellow);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 10px;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 20px;
+
+      padding: 7px 10px;
+
+      border: 1px solid rgba(255, 197, 111, 0.2);
+
+      border-radius: 20px;
+
+      background: rgba(255, 197, 111, 0.04);
+    }
+
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(58px, 9vw, 100px);
+
+      line-height: 0.9;
+
+      letter-spacing: -0.075em;
+
+      margin-bottom: 28px;
+    }
+
+
+    .hero h1 span {
+      color: transparent;
+
+      -webkit-text-stroke: 1px rgba(242, 246, 251, 0.5);
+    }
+
+
+    .hero-description {
+      max-width: 650px;
+
+      color: var(--text-light);
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+
+    .hero-description strong {
+      color: var(--text);
+    }
+
+
+    .hero-buttons {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 28px;
+    }
+
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-decoration: none;
+
+      padding: 11px 16px;
+
+      border-radius: 9px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      border: 1px solid var(--border);
+
+      transition: 0.25s ease;
+    }
+
+
+    .button.primary {
+      background: var(--text);
+
+      color: #07111d;
+
+      border-color: var(--text);
+    }
+
+
+    .button.primary:hover {
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.025);
+
+      color: var(--text);
+    }
+
+
+    .button.secondary:hover {
+      transform: translateY(-2px);
+
+      border-color: var(--border-hover);
+
+      background: rgba(112, 191, 255, 0.05);
+    }
+
+
+    .hero-details {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 23px;
+    }
+
+
+    .hero-details span {
+      color: var(--muted);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+
+      padding: 6px 9px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+
+    /* =========================
+       PROFILE CARD
+    ========================= */
+
+    .profile-card {
+      padding: 27px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 23px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(18, 40, 65, 0.85),
+          rgba(9, 22, 37, 0.8)
+        );
+
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.25);
+
+      position: relative;
+
+      overflow: hidden;
+
+      animation: gentleFloat 5s ease-in-out infinite;
+    }
+
+
+    .profile-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+
+      height: 170px;
+
+      right: -80px;
+
+      top: -80px;
+
+      border-radius: 50%;
+
+      background: rgba(104, 223, 245, 0.1);
+
+      filter: blur(5px);
+    }
+
+
+    .profile-top {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 30px;
+    }
+
+
+    .profile-top small {
+      color: var(--muted);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+    }
+
+
+    .profile-status {
+      color: var(--green);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+    }
+
+
+    .profile-image {
+      width: 82px;
+
+      height: 82px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #285f8b,
+          #123452
+        );
+
+      border: 1px solid rgba(104, 223, 245, 0.2);
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 29px;
+
+      font-weight: 700;
+
+      margin-bottom: 18px;
+    }
+
+
+    .profile-card h2 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 26px;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .profile-card > p {
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    .profile-info {
+      margin-top: 25px;
+
+      display: grid;
+
+      gap: 9px;
+    }
+
+
+    .profile-info div {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 12px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+
+    .profile-info span:first-child {
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .profile-info span:last-child {
+      color: var(--text-light);
+
+      font-size: 10px;
+
+      text-align: right;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+
+    .section {
+      padding: 90px 0;
+    }
+
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+
+    .section-label {
+      color: var(--blue);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.12em;
+
+      margin-bottom: 8px;
+    }
+
+
+    .section-heading h2 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(32px, 5vw, 47px);
+
+      line-height: 1;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .section-heading p {
+      max-width: 580px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-top: 12px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1.4fr 0.6fr;
+
+      gap: 16px;
+    }
+
+
+    .box {
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      background: var(--card);
+
+      padding: 28px;
+
+      backdrop-filter: blur(12px);
+    }
+
+
+    .about-text {
+      color: var(--text-light);
+
+      font-size: 15px;
+
+      line-height: 1.9;
+    }
+
+
+    .about-text strong {
+      color: var(--text);
+    }
+
+
+    .interest-list {
+      display: grid;
+
+      gap: 0;
+    }
+
+
+    .interest {
+      padding: 13px 0;
+
+      border-bottom: 1px solid var(--border);
+
+      font-size: 13px;
+    }
+
+
+    .interest:last-child {
+      border-bottom: none;
+    }
+
+
+    .interest small {
+      display: block;
+
+      color: var(--blue);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 8px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 3px;
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .skill-card {
+      min-height: 145px;
+
+      padding: 21px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      transition: 0.3s ease;
+    }
+
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+
+      border-color: var(--border-hover);
+
+      background: var(--card-hover);
+    }
+
+
+    .skill-card h3 {
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 10px;
+
+      color: var(--yellow);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 15px;
+    }
+
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+
+    .tag {
+      font-size: 11px;
+
+      color: var(--text-light);
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      padding: 6px 9px;
+
+      background: rgba(255, 255, 255, 0.018);
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 15px;
+    }
+
+
+    .project-card {
+      padding: 25px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15, 32, 52, 0.8),
+          rgba(8, 20, 34, 0.75)
+        );
+
+      transition: 0.3s ease;
+
+      position: relative;
+    }
+
+
+    .project-card:hover {
+      transform: translateY(-5px);
+
+      border-color: var(--border-hover);
+    }
+
+
+    .project-card .number {
+      color: var(--blue);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+    }
+
+
+    .project-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 23px;
+
+      margin: 13px 0 8px;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .project-card p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.7;
+
+      min-height: 65px;
+    }
+
+
+    .project-tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin: 17px 0;
+    }
+
+
+    .project-tags span {
+      color: #a9bdd4;
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 8px;
+
+      padding: 5px 7px;
+
+      border-radius: 5px;
+
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+
+    .project-link {
+      display: inline-block;
+
+      text-decoration: none;
+
+      color: var(--text);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      padding: 8px 10px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      transition: 0.2s;
+    }
+
+
+    .project-link:hover {
+      border-color: var(--blue);
+
+      background: rgba(112, 191, 255, 0.06);
+    }
+
+
+    /* =========================
+       CERTIFICATIONS
+    ========================= */
+
+    .certifications {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .certification {
+      padding: 21px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      transition: 0.3s;
+    }
+
+
+    .certification:hover {
+      transform: translateY(-4px);
+
+      border-color: var(--border-hover);
+    }
+
+
+    .certification small {
+      color: var(--yellow);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+    }
+
+
+    .certification h3 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 16px;
+
+      margin: 10px 0 4px;
+    }
+
+
+    .certification p {
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       EDUCATION
+    ========================= */
+
+    .education {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    .education h3 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 21px;
+    }
+
+
+    .education p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-top: 5px;
+
+      max-width: 700px;
+    }
+
+
+    .education-year {
+      color: var(--blue);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 10px;
+
+      border: 1px solid var(--border);
+
+      padding: 8px 10px;
+
+      border-radius: 7px;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 13px;
+    }
+
+
+    .contact-card {
+      text-decoration: none;
+
+      padding: 20px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      transition: 0.3s ease;
+    }
+
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+
+      border-color: var(--border-hover);
+
+      background: rgba(112, 191, 255, 0.04);
+    }
+
+
+    .contact-card small {
+      display: block;
+
+      color: var(--blue);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 8px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+
+    .contact-card strong {
+      display: block;
+
+      font-size: 13px;
+
+      word-break: break-word;
+    }
+
+
+    .contact-card span {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 4px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding: 27px 0 40px;
+
+      color: var(--muted);
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+
+    /* =========================
+       SCROLL ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    @keyframes gentleFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+
+      .profile-card {
+        max-width: 550px;
+      }
+
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+
+      .certifications {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: calc(100% - 28px);
+      }
+
+
+      .nav-links {
+        display: none;
+      }
+
+
+      .availability {
+        font-size: 8px;
+      }
+
+
+      .hero {
+        padding-top: 110px;
+
+        padding-bottom: 65px;
+      }
+
+
+      .hero h1 {
+        font-size: 19vw;
+      }
+
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+
+      .button {
+        width: 100%;
+      }
+
+
+      .section {
+        padding: 65px 0;
+      }
+
+
+      .skills-grid,
+      .projects-grid,
+      .certifications,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .box {
+        padding: 22px;
+      }
+
+
+      .education {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+
+      footer {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav class="navbar" id="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        Meet<span>.</span>Dave
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#skills">
+          Skills
+        </a>
+
+        <a href="#projects">
+          Projects
+        </a>
+
+        <a href="#education">
+          Education
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="availability">
+
+        <span></span>
+
+        Open to opportunities
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <main>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero container">
+
+
+      <div class="reveal">
+
+
+        <div class="small-intro">
+          Computer Science Student
+        </div>
+
+
+        <h1>
+
+          Hi, I'm
+
+          <span>
+            Meet.
+          </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          I'm a Computer Science student who enjoys
+          <strong>building things and learning new technologies.</strong>
+          My interests are mainly around software development,
+          cloud, data, and networking.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+          <a
+            href="#projects"
+            class="button primary"
+          >
+            See my projects →
+          </a>
+
+
+          <a
+            href="#contact"
+            class="button secondary"
+          >
+            Get in touch
+          </a>
+
+
+        </div>
+
+
+        <div class="hero-details">
+
+
+          <span>
+            📍 Pune, Maharashtra
+          </span>
+
+
+          <span>
+            B.Tech CSE
+          </span>
+
+
+          <span>
+            Open to opportunities
+          </span>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- PROFILE -->
+
+      <div class="profile-card reveal">
+
+
+        <div class="profile-top">
+
+          <small>
+            A little about me
+          </small>
+
+          <div class="profile-status">
+            ● Available
+          </div>
+
+        </div>
+
+
+        <div class="profile-image">
+          MD
+        </div>
+
+
+        <h2>
+          Meet Dave
+        </h2>
+
+
+        <p>
+          B.Tech Computer Science student
+        </p>
+
+
+        <div class="profile-info">
+
+
+          <div>
+
+            <span>
+              Currently
+            </span>
+
+            <span>
+              Final Year
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Interested in
+            </span>
+
+            <span>
+              Software & Cloud
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Based in
+            </span>
+
+            <span>
+              Pune, India
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Looking for
+            </span>
+
+            <span>
+              Entry-level roles
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+      id="about"
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          About me
+        </div>
+
+        <h2>
+          A bit about myself.
+        </h2>
+
+        <p>
+          More than just a list of technologies.
+        </p>
+
+      </div>
+
+
+
+      <div class="about-grid">
+
+
+        <div class="box">
+
+
+          <p class="about-text">
+
+            I'm currently pursuing my B.Tech in Computer Science
+            and Engineering. During college, I've worked on different
+            projects that helped me understand how software,
+            APIs, databases and cloud technologies work together.
+
+            <br><br>
+
+            I like learning by actually building something rather
+            than only studying the theory. Some of the technologies
+            I've worked with include React, Python, FastAPI, AWS,
+            Docker, MySQL and SQLite.
+
+            <br><br>
+
+            At this stage of my career, I'm mainly looking for a
+            place where I can <strong>learn from experienced people,
+            contribute to real projects and improve my skills.</strong>
+
+          </p>
+
+
+        </div>
+
+
+
+        <div class="box interest-list">
+
+
+          <div class="interest">
+
+            <small>
+              Interested in
+            </small>
+
+            Software Development
+
+          </div>
+
+
+          <div class="interest">
+
+            <small>
+              Exploring
+            </small>
+
+            Cloud & DevOps
+
+          </div>
+
+
+          <div class="interest">
+
+            <small>
+              Learning
+            </small>
+
+            Data & Databases
+
+          </div>
+
+
+          <div class="interest">
+
+            <small>
+              Also interested in
+            </small>
+
+            Networking & IT
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section
+      id="skills"
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          Skills
+        </div>
+
+        <h2>
+          Technologies I've worked with.
+        </h2>
+
+        <p>
+          This is a growing list. I'm still learning and adding
+          new tools as I work on different projects.
+        </p>
+
+      </div>
+
+
+
+      <div class="skills-grid">
+
+
+        <!-- PROGRAMMING -->
+
+        <div class="skill-card">
+
+          <h3>
+            Programming & Web
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">Python</span>
+
+            <span class="tag">JavaScript</span>
+
+            <span class="tag">React.js</span>
+
+            <span class="tag">HTML</span>
+
+            <span class="tag">CSS</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- BACKEND -->
+
+        <div class="skill-card">
+
+          <h3>
+            Backend
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">FastAPI</span>
+
+            <span class="tag">REST APIs</span>
+
+            <span class="tag">WebSockets</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CLOUD -->
+
+        <div class="skill-card">
+
+          <h3>
+            Cloud & DevOps
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">AWS</span>
+
+            <span class="tag">Docker</span>
+
+            <span class="tag">Kubernetes</span>
+
+            <span class="tag">Git</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- DATABASE -->
+
+        <div class="skill-card">
+
+          <h3>
+            Databases
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">MySQL</span>
+
+            <span class="tag">SQLite</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- UI -->
+
+        <div class="skill-card">
+
+          <h3>
+            UI & Tools
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">Tailwind CSS</span>
+
+            <span class="tag">Chakra UI</span>
+
+            <span class="tag">Figma</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- SOFT SKILLS -->
+
+        <div class="skill-card">
+
+          <h3>
+            Other
+          </h3>
+
+          <div class="tags">
+
+            <span class="tag">Communication</span>
+
+            <span class="tag">Teamwork</span>
+
+            <span class="tag">Presentation</span>
+
+            <span class="tag">Problem Solving</span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECTS
+    ========================= -->
+
+    <section
+      id="projects"
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          Projects
+        </div>
+
+        <h2>
+          Things I've built.
+        </h2>
+
+        <p>
+          A few projects I've worked on while learning and
+          experimenting with different technologies.
+        </p>
+
+      </div>
+
+
+
+      <div class="projects-grid">
+
+
+        <!-- PROJECT 1 -->
+
+        <article class="project-card">
+
+
+          <div class="number">
+            01
+          </div>
+
+
+          <h3>
+            Teamfinder
+          </h3>
+
+
+          <p>
+
+            A platform for finding teammates for projects and
+            activities. I worked with React on the frontend and
+            FastAPI on the backend, along with real-time
+            communication.
+
+          </p>
+
+
+          <div class="project-tags">
+
+            <span>React.js</span>
+
+            <span>FastAPI</span>
+
+            <span>WebSockets</span>
+
+            <span>Chakra UI</span>
+
+          </div>
+
+
+          <a
+            href="https://github.com/meetdave22/Teamfinder"
+            target="_blank"
+            rel="noopener"
+            class="project-link"
+          >
+            View on GitHub ↗
+          </a>
+
+
+        </article>
+
+
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-card">
+
+
+          <div class="number">
+            02
+          </div>
+
+
+          <h3>
+            Trivision
+          </h3>
+
+
+          <p>
+
+            A computer-vision based project that I built while
+            exploring image processing and practical applications
+            of computer vision.
+
+          </p>
+
+
+          <div class="project-tags">
+
+            <span>Python</span>
+
+            <span>Computer Vision</span>
+
+            <span>AI</span>
+
+          </div>
+
+
+          <a
+            href="https://github.com/meetdave22"
+            target="_blank"
+            rel="noopener"
+            class="project-link"
+          >
+            View on GitHub ↗
+          </a>
+
+
+        </article>
+
+
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-card">
+
+
+          <div class="number">
+            03
+          </div>
+
+
+          <h3>
+            More projects coming
+          </h3>
+
+
+          <p>
+
+            I'm currently working on new ideas and projects.
+            I'll be adding them here as they become ready.
+
+          </p>
+
+
+          <div class="project-tags">
+
+            <span>Learning</span>
+
+            <span>Building</span>
+
+            <span>Experimenting</span>
+
+          </div>
+
+
+        </article>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         CERTIFICATIONS
+    ========================= -->
+
+    <section
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          Certifications
+        </div>
+
+        <h2>
+          Things I've learned.
+        </h2>
+
+        <p>
+          Some of the areas where I've completed additional
+          learning outside my regular coursework.
+        </p>
+
+      </div>
+
+
+
+      <div class="certifications">
+
+
+        <div class="certification">
+
+          <small>
+            01
+          </small>
+
+          <h3>
+            Cloud & AWS
+          </h3>
+
+          <p>
+            Learning around cloud computing and AWS services.
+          </p>
+
+        </div>
+
+
+
+        <div class="certification">
+
+          <small>
+            02
+          </small>
+
+          <h3>
+            Docker & Containers
+          </h3>
+
+          <p>
+            Understanding containerization and deployment.
+          </p>
+
+        </div>
+
+
+
+        <div class="certification">
+
+          <small>
+            03
+          </small>
+
+          <h3>
+            Database Technologies
+          </h3>
+
+          <p>
+            Additional learning around databases and SQL.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         EDUCATION
+    ========================= -->
+
+    <section
+      id="education"
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          Education
+        </div>
+
+        <h2>
+          My academic background.
+        </h2>
+
+      </div>
+
+
+
+      <div class="box education">
+
+
+        <div>
+
+          <h3>
+            B.Tech in Computer Science & Engineering
+          </h3>
+
+          <p>
+
+            Currently in my final year. My coursework and
+            projects have given me exposure to programming,
+            databases, cloud computing, networking and
+            software development.
+
+          </p>
+
+        </div>
+
+
+        <div class="education-year">
+          2026
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section
+      id="contact"
+      class="section container reveal"
+    >
+
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          Contact
+        </div>
+
+        <h2>
+          Let's connect.
+        </h2>
+
+        <p>
+
+          If you have an opportunity, project idea, or simply
+          want to get in touch, feel free to reach out.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="contact-grid">
+
+
+        <!-- EMAIL -->
+
+        <a
+          class="contact-card"
+          href="mailto:meetdave745@gmail.com"
+        >
+
+          <small>
+            Email
+          </small>
+
+          <strong>
+            meetdave745@gmail.com
+          </strong>
+
+          <span>
+            Send me an email →
+          </span>
+
+        </a>
+
+
+
+        <!-- LINKEDIN -->
+
+        <a
+          class="contact-card"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <small>
+            LinkedIn
+          </small>
+
+          <strong>
+            LinkedIn Profile
+          </strong>
+
+          <span>
+            Connect with me →
+          </span>
+
+        </a>
+
+
+
+        <!-- GITHUB -->
+
+        <a
+          class="contact-card"
+          href="https://github.com/meetdave22"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <small>
+            GitHub
+          </small>
+
+          <strong>
+            github.com/meetdave22
+          </strong>
+
+          <span>
+            See my code →
+          </span>
+
+        </a>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="container">
+
+    <span>
+      © 2026 Meet Dave
+    </span>
+
+    <span>
+      Built while learning & experimenting.
+    </span>
+
+  </footer>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* Navbar background */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 20) {
+
+        navbar.classList.add("scrolled");
+
+      } else {
+
+        navbar.classList.remove("scrolled");
+
+      }
+
+    });
+
+
+
+    /* Scroll reveal */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach((element) => {
+
+      revealObserver.observe(element);
+
+    });
+
+  </script>
+
+
+</body>
+</html>
